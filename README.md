@@ -60,16 +60,6 @@ bundle exec rails db:seed
 ```
 Creates 50 articles with up to 600 comments
 
-## Seed data behavior
-
-Seeds generate realistic demo content using `faker`:
-
-- exactly `50` articles
-- for each article: `2..600` comments
-- the most recently created article (first in feed) always has `> 500` comments
-- article body has `3..5` paragraphs
-- realistic author names, titles, bodies, and comment text
-
 ## Run in development
 
 From repository root:
@@ -139,6 +129,7 @@ Base path: `/api`
 - introduce .env with common settings
 - for /overview it's better to store stats in materialized view or use similar approach. Or at least refactor to single SQL query
 - clear up frontend app: I'd like to extract article card to separate component, make better error handling
+- OpenAPI docs via rswag gem
 
 ### Notes
 - Actually I'd prefer to use Rails' default Hotwire stack for this project, with real-time updates out of the box, view caching, etc..

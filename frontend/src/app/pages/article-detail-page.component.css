@@ -1,0 +1,29 @@
+.article-block {
+  margin-bottom: 1rem;
+}
+
+.article-body p {
+  line-height: 1.65;
+  margin-bottom: 0.8rem;
+}
+
+.comments-header {
+  margin-bottom: 0.45rem;
+}
+
+.comment-form {
+  margin-bottom: 1rem;
+}
+
+.comments-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.comment-item p {
+  margin-bottom: 0.5rem;
+}
+
+.sentinel {
+  height: 2px;
+}

@@ -1,0 +1,17 @@
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a routerLink="/articles" class="brand">Bloggy</a>
+
+    <nav class="menu">
+      <a routerLink="/articles" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        Articles
+      </a>
+      <a routerLink="/articles/new" routerLinkActive="active">New Article</a>
+      <a routerLink="/overview" routerLinkActive="active">Overview</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container main-content">
+  <router-outlet></router-outlet>
+</main>

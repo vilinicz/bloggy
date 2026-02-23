@@ -1,0 +1,55 @@
+:host {
+  display: block;
+}
+
+.topbar {
+  background: linear-gradient(135deg, #0b3d2e, #125f47);
+  border-bottom: 1px solid color-mix(in srgb, #ffffff 25%, transparent);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.topbar-inner {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  padding-bottom: 0.8rem;
+  padding-top: 0.8rem;
+}
+
+.brand {
+  color: #f7fff8;
+  font-family: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.menu a {
+  border: 1px solid color-mix(in srgb, #ffffff 35%, transparent);
+  border-radius: 999px;
+  color: #f7fff8;
+  font-size: 0.92rem;
+  padding: 0.35rem 0.85rem;
+  text-decoration: none;
+}
+
+.menu a.active,
+.menu a:hover {
+  background: #f7fff8;
+  color: #0f4d3a;
+}
+
+.main-content {
+  padding-bottom: 3rem;
+  padding-top: 1.4rem;
+}

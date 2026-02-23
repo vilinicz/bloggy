@@ -1,0 +1,34 @@
+.heading {
+  margin-bottom: 1rem;
+}
+
+.stats-grid {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  margin-bottom: 1rem;
+}
+
+.value {
+  font-family: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.leader-item {
+  border-top: 1px dashed rgba(37, 62, 50, 0.24);
+  padding-top: 0.75rem;
+}
+
+.leader-item h3 {
+  margin-bottom: 0.2rem;
+}
+
+.leader-item h3 a {
+  text-decoration: none;
+}
+
+.leader-item h3 a:hover {
+  text-decoration: underline;
+}

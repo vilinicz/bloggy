@@ -1,0 +1,44 @@
+<section class="hero card">
+  <h1>Articles Feed</h1>
+  <p class="muted">Latest community posts with comment activity.</p>
+</section>
+
+@if (errorMessage) {
+  <p class="error">{{ errorMessage }}</p>
+}
+
+<section class="articles">
+  @for (article of articles; track article.id) {
+    <article class="card article-item">
+      <header>
+        <h3>
+          <a [routerLink]="['/articles', article.id]">{{ article.title }}</a>
+        </h3>
+      </header>
+      <p class="meta">
+        By {{ article.author_name }} · {{ article.created_at | date: 'MMM d, y, h:mm a' }} · {{ article.comments_count }} comments
+      </p>
+      <footer>
+        <a [routerLink]="['/articles', article.id]">Read and discuss</a>
+      </footer>
+    </article>
+  }
+</section>
+
+@if (loading && articles.length === 0) {
+  <p class="center muted">Loading articles...</p>
+}
+
+@if (loaded && !loading && articles.length === 0) {
+  <p class="center muted">No articles yet. Create the first one.</p>
+}
+
+<div #sentinel class="sentinel" aria-hidden="true"></div>
+
+@if (loading && articles.length > 0) {
+  <p class="center muted">Loading more...</p>
+}
+
+@if (loaded && !loading && nextCursor === null && articles.length > 0) {
+  <p class="center muted">You've reached the end of the feed.</p>
+}

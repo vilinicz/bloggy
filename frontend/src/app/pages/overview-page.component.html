@@ -1,0 +1,46 @@
+<section class="card heading">
+  <h1>Engagement Overview</h1>
+  <p class="muted">Quick snapshot of article and comment activity.</p>
+</section>
+
+@if (loading) {
+  <p class="center muted">Loading overview...</p>
+}
+
+@if (errorMessage) {
+  <p class="error">{{ errorMessage }}</p>
+}
+
+@if (data) {
+  <section class="stats-grid">
+    <article class="card">
+      <h3>Total Articles</h3>
+      <p class="value">{{ data.total_articles }}</p>
+    </article>
+
+    <article class="card">
+      <h3>Total Comments</h3>
+      <p class="value">{{ data.total_comments }}</p>
+    </article>
+  </section>
+
+  <section class="card">
+    <h2>Most Commented Articles</h2>
+
+    @if (data.most_commented_articles.length === 0) {
+      <p class="muted">No articles yet.</p>
+    }
+
+    @for (article of data.most_commented_articles; track article.id) {
+      <article class="leader-item">
+        <h3>
+          <a [routerLink]="['/articles', article.id]">{{ article.title }}</a>
+        </h3>
+        <p class="meta">
+          {{ article.comments_count }} comments · {{ article.author_name }} ·
+          {{ article.created_at | date: 'mediumDate' }}
+        </p>
+      </article>
+    }
+  </section>
+}

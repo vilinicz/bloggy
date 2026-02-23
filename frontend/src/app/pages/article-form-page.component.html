@@ -1,0 +1,57 @@
+<article class="card">
+  <header>
+    <h1>Create Article</h1>
+    <p class="muted">Share a post with title, body, and your name.</p>
+  </header>
+
+  @if (errorMessage) {
+    <p class="error">{{ errorMessage }}</p>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label for="article-title">Title</label>
+    <input
+      id="article-title"
+      type="text"
+      formControlName="title"
+      maxlength="200"
+      [attr.aria-invalid]="form.controls.title.touched && form.controls.title.invalid ? 'true' : null"
+      [attr.aria-describedby]="form.controls.title.touched && form.controls.title.invalid ? 'article-title-error' : null"
+    />
+    @if (form.controls.title.touched && form.controls.title.invalid) {
+      <small id="article-title-error">Title is required (max 200 chars).</small>
+    }
+
+    <label for="article-author-name">Author name</label>
+    <input
+      id="article-author-name"
+      type="text"
+      formControlName="author_name"
+      maxlength="100"
+      [attr.aria-invalid]="form.controls.author_name.touched && form.controls.author_name.invalid ? 'true' : null"
+      [attr.aria-describedby]="form.controls.author_name.touched && form.controls.author_name.invalid ? 'article-author-name-error' : null"
+    />
+    @if (form.controls.author_name.touched && form.controls.author_name.invalid) {
+      <small id="article-author-name-error">Author name is required (max 100 chars).</small>
+    }
+
+    <label for="article-body">Body</label>
+    <textarea
+      id="article-body"
+      formControlName="body"
+      rows="9"
+      [attr.aria-invalid]="form.controls.body.touched && form.controls.body.invalid ? 'true' : null"
+      [attr.aria-describedby]="form.controls.body.touched && form.controls.body.invalid ? 'article-body-error' : null"
+    ></textarea>
+    @if (form.controls.body.touched && form.controls.body.invalid) {
+      <small id="article-body-error">Body is required.</small>
+    }
+
+    <footer class="actions">
+      <button type="submit" [attr.aria-busy]="saving ? 'true' : null" [disabled]="saving">
+        {{ saving ? 'Publishing...' : 'Publish Article' }}
+      </button>
+      <a routerLink="/articles" class="secondary">Cancel</a>
+    </footer>
+  </form>
+</article>

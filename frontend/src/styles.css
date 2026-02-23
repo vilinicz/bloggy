@@ -1,0 +1,54 @@
+@import '@picocss/pico/css/pico.min.css';
+
+:root {
+  --pico-font-family: 'Avenir Next', 'Segoe UI', 'Trebuchet MS', sans-serif;
+  --pico-border-radius: 0.7rem;
+  --pico-form-element-spacing-vertical: 0.62rem;
+  --pico-form-element-spacing-horizontal: 0.7rem;
+  --pico-primary: #0f6d55;
+  --pico-primary-hover: #0a4b3b;
+  --pico-primary-focus: rgba(15, 109, 85, 0.24);
+}
+
+body {
+  background:
+    radial-gradient(circle at 5% 0%, rgba(196, 255, 214, 0.45) 0%, transparent 42%),
+    radial-gradient(circle at 100% 0%, rgba(255, 234, 202, 0.55) 0%, transparent 38%),
+    #f5f8f2;
+  color: #1d2b24;
+  margin: 0;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  letter-spacing: 0.01em;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(25, 51, 40, 0.12);
+  border-radius: 0.85rem;
+  box-shadow: 0 10px 28px rgba(16, 50, 38, 0.08);
+  padding: 1rem;
+}
+
+.meta {
+  color: #4a5c51;
+  font-size: 0.88rem;
+}
+
+.error {
+  color: #8f132a;
+  margin-bottom: 1rem;
+}
+
+.muted {
+  color: #5c6f63;
+}
+
+.center {
+  text-align: center;
+}

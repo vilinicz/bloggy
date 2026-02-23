@@ -1,0 +1,18 @@
+article {
+  max-width: 48rem;
+}
+
+.actions {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.actions .secondary {
+  color: #36594a;
+  text-decoration: none;
+}
+
+.actions .secondary:hover {
+  text-decoration: underline;
+}

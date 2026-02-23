@@ -1,0 +1,28 @@
+.hero {
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  margin-bottom: 0.25rem;
+}
+
+.articles {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.article-item h3 {
+  margin-bottom: 0.35rem;
+}
+
+.article-item a {
+  text-decoration: none;
+}
+
+.article-item a:hover {
+  text-decoration: underline;
+}
+
+.sentinel {
+  height: 2px;
+}

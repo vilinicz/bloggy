@@ -1,0 +1,92 @@
+@if (articleLoading) {
+  <p class="center muted">Loading article...</p>
+}
+
+@if (articleError) {
+  <p class="error">{{ articleError }}</p>
+}
+
+@if (article) {
+  <article class="card article-block">
+    <header>
+      <h1>{{ article.title }}</h1>
+      <p class="meta">By {{ article.author_name }} · {{ article.created_at | date: 'MMM d, y, h:mm a' }}</p>
+    </header>
+
+    <section class="article-body">
+      @for (paragraph of article.body.split('\n\n'); track $index) {
+        <p>{{ paragraph }}</p>
+      }
+    </section>
+  </article>
+
+  <section class="comments-header">
+    <h2>Comments ({{ article.comments_count }})</h2>
+  </section>
+
+  <article class="card comment-form">
+    <h3>Add comment</h3>
+
+    @if (commentError) {
+      <p class="error">{{ commentError }}</p>
+    }
+
+    <form [formGroup]="commentForm" (ngSubmit)="submitComment()">
+      <label for="comment-author-name">Your name</label>
+      <input
+        id="comment-author-name"
+        type="text"
+        formControlName="author_name"
+        maxlength="100"
+        [attr.aria-invalid]="commentForm.controls.author_name.touched && commentForm.controls.author_name.invalid ? 'true' : null"
+        [attr.aria-describedby]="commentForm.controls.author_name.touched && commentForm.controls.author_name.invalid ? 'comment-author-name-error' : null"
+      />
+      @if (commentForm.controls.author_name.touched && commentForm.controls.author_name.invalid) {
+        <small id="comment-author-name-error">Author name is required (max 100 chars).</small>
+      }
+
+      <label for="comment-body">Comment</label>
+      <textarea
+        id="comment-body"
+        formControlName="body"
+        rows="4"
+        [attr.aria-invalid]="commentForm.controls.body.touched && commentForm.controls.body.invalid ? 'true' : null"
+        [attr.aria-describedby]="commentForm.controls.body.touched && commentForm.controls.body.invalid ? 'comment-body-error' : null"
+      ></textarea>
+      @if (commentForm.controls.body.touched && commentForm.controls.body.invalid) {
+        <small id="comment-body-error">Comment body is required.</small>
+      }
+
+      <button type="submit" [attr.aria-busy]="postingComment ? 'true' : null" [disabled]="postingComment">
+        {{ postingComment ? 'Posting...' : 'Post comment' }}
+      </button>
+    </form>
+  </article>
+
+  @if (commentsError) {
+    <p class="error">{{ commentsError }}</p>
+  }
+
+  <section class="comments-list">
+    @for (comment of comments; track comment.id) {
+      <article class="card comment-item">
+        <p>{{ comment.body }}</p>
+        <footer class="meta">{{ comment.author_name }} · {{ comment.created_at | date: 'medium' }}</footer>
+      </article>
+    }
+  </section>
+
+  @if (commentsLoading && comments.length === 0) {
+    <p class="center muted">Loading comments...</p>
+  }
+
+  @if (commentsLoading && comments.length > 0) {
+    <p class="center muted">Loading more comments...</p>
+  }
+
+  @if (commentsLoaded && !commentsLoading && commentsCursor === null && comments.length > 0) {
+    <p class="center muted">No more comments.</p>
+  }
+}
+
+<div #commentSentinel class="sentinel" aria-hidden="true"></div>
